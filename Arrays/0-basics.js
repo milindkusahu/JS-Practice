@@ -2,7 +2,7 @@
 
 // Decalaration
 let person = {
-  name: "Piyush",
+  name: "Milind",
   age: 25,
 };
 
