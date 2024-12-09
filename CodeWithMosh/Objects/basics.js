@@ -121,3 +121,53 @@ function increase(obj) {
 
 increase(obj);
 console.log(obj); // {value: 11}
+
+// Enumerating properties of an Object
+
+const circle3 = {
+  radius: 1,
+  draw() {
+    console.log("draw");
+  },
+};
+
+for (let key in circle3) {
+  console.log(key, circle3[key]);
+}
+// radius 1
+// draw [Function: draw]
+
+/*
+
+for (let key of circle3) {
+  console.log(key); // Error -> Objects are not iterable
+}
+*/
+
+// Takeaways: Use for-in loop for looping over Objects
+
+// Cloning Objects
+
+/* Method -> 1
+let another1 = {};
+
+for (let key in circle3) {
+  another1[key] = circle[key];
+}
+
+console.log(another1); // { radius: 1, draw: [Function (anonymous)] }
+
+*/
+
+/* Method -> 2
+const another1 = Object.assign({}, circle3);
+
+console.log(another1); // { radius: 1, draw: [Function (anonymous)] }
+
+*/
+
+// Method -> 3
+
+const another1 = { ...circle3 };
+
+console.log(another1); // { radius: 1, draw: [Function: draw] }
