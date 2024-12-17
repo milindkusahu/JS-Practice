@@ -17,7 +17,45 @@
 * Maps and Sets generally have better performance than using regular objects for lookups
 * WeakMap and WeakSet help with memory management but sacrifice iteration capabilities
 
-## **Map**
+## Common Problems with Strong References (Map/Set):
+
+```
+// Memory leak example with Map
+const userDataCache = new Map();
+
+function processUser(user) {
+    userDataCache.set(user, calculateUserData(user));
+}
+
+// Even if users are deleted from your system
+// their data stays in the Map forever unless manually removed
+// Memory keeps growing! 😱
+```
+
+### Fixed with WeakMap
+
+```
+const userDataCache = new WeakMap();
+
+function processUser(user) {
+    userDataCache.set(user, calculateUserData(user));
+}
+
+// When user objects are no longer used
+// their cache entries are automatically removed
+// Memory is freed! 😊
+```
+
+## Key Interview Points:
+
+1. Regular Maps and Sets keep objects alive in memory even if they're not used anywhere else
+2. WeakMaps and WeakSets allow objects to be garbage collected if there are no other references
+3. This is why WeakMaps and WeakSets can't be iterated - their contents might disappear at any time!
+4. Perfect for caches, metadata storage, and preventing memory leaks
+
+This concept is crucial for memory management in large applications, especially when dealing with DOM elements or large data sets that need to be garbage collected properly.
+
+### **Map**
 
 **Time Complexity:**
 
