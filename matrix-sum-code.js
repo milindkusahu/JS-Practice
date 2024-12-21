@@ -27,7 +27,7 @@ console.log(sumRows([
 ]));
 
 
-// Sum of each Column in an n x n Matrix
+// Sum of each Column in an nxn Matrix
 
 function sumColumns (matrix) {
 
